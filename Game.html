@@ -1,0 +1,934 @@
+<!doctype html>
+<html lang="th" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="จัดอันดับ 10 เกมที่ดีที่สุดตลอดกาล รวมเกม Adventure, Action, RPG สุดมันส์">
+  <meta name="keywords" content="best games, top 10 games, game ranking, เกมที่ดีที่สุด">
+  <meta name="author" content="Top 10 Best Games Ranking">
+  <meta property="og:title" content="Top 10 Best Games Ranking - สุดยอดเกมตลอดกาล">
+  <meta property="og:description" content="ค้นพบ 10 เกมที่ดีที่สุดตลอดกาลที่นักเล่นเกมทุกคนควรลอง">
+  <title>Top 10 Best Games Ranking</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=Kanit:wght@300;400;600;700&amp;display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-bg: #0a0a0f;
+      --secondary-bg: #151520;
+      --accent-color: #8b5cf6;
+      --accent-hover: #a78bfa;
+      --text-primary: #f1f5f9;
+      --text-secondary: #94a3b8;
+      --card-border: rgba(139, 92, 246, 0.3);
+      --glow-color: rgba(139, 92, 246, 0.5);
+    }
+    
+    * {
+      scrollbar-width: thin;
+      scrollbar-color: var(--accent-color) var(--secondary-bg);
+    }
+    
+    *::-webkit-scrollbar {
+      width: 8px;
+    }
+    
+    *::-webkit-scrollbar-track {
+      background: var(--secondary-bg);
+    }
+    
+    *::-webkit-scrollbar-thumb {
+      background: var(--accent-color);
+      border-radius: 4px;
+    }
+    
+    body {
+      font-family: 'Kanit', sans-serif;
+      background: var(--primary-bg);
+      color: var(--text-primary);
+    }
+    
+    .font-display {
+      font-family: 'Orbitron', sans-serif;
+    }
+    
+    .bg-grid {
+      background-image: 
+        linear-gradient(rgba(139, 92, 246, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(139, 92, 246, 0.03) 1px, transparent 1px);
+      background-size: 50px 50px;
+    }
+    
+    .glow-text {
+      text-shadow: 0 0 20px var(--glow-color), 0 0 40px var(--glow-color);
+    }
+    
+    .card-glow {
+      box-shadow: 0 0 20px rgba(139, 92, 246, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    }
+    
+    .card-glow:hover {
+      box-shadow: 0 0 40px rgba(139, 92, 246, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    }
+    
+    .rank-badge {
+      background: linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%);
+      box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4);
+    }
+    
+    .rank-1 .rank-badge {
+      background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+      box-shadow: 0 4px 15px rgba(251, 191, 36, 0.5);
+    }
+    
+    .rank-2 .rank-badge {
+      background: linear-gradient(135deg, #e5e7eb 0%, #9ca3af 100%);
+      box-shadow: 0 4px 15px rgba(156, 163, 175, 0.4);
+    }
+    
+    .rank-3 .rank-badge {
+      background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+      box-shadow: 0 4px 15px rgba(249, 115, 22, 0.4);
+    }
+    
+    .game-card {
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      transform-origin: center;
+    }
+    
+    .game-card:hover {
+      transform: translateY(-8px) scale(1.02);
+    }
+    
+    .game-image {
+      transition: all 0.5s ease;
+    }
+    
+    .game-card:hover .game-image {
+      transform: scale(1.1);
+      filter: brightness(1.1);
+    }
+    
+    .score-bar {
+      background: linear-gradient(90deg, #22c55e 0%, #84cc16 50%, #eab308 100%);
+    }
+    
+    .nav-blur {
+      backdrop-filter: blur(20px);
+      background: rgba(10, 10, 15, 0.8);
+    }
+    
+    .page-transition {
+      animation: fadeSlideIn 0.5s ease forwards;
+    }
+    
+    @keyframes fadeSlideIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    
+    .float-animation {
+      animation: float 3s ease-in-out infinite;
+    }
+    
+    @keyframes pulse-glow {
+      0%, 100% { box-shadow: 0 0 20px rgba(139, 92, 246, 0.3); }
+      50% { box-shadow: 0 0 40px rgba(139, 92, 246, 0.6); }
+    }
+    
+    .pulse-glow {
+      animation: pulse-glow 2s ease-in-out infinite;
+    }
+    
+    .stagger-1 { animation-delay: 0.1s; }
+    .stagger-2 { animation-delay: 0.2s; }
+    .stagger-3 { animation-delay: 0.3s; }
+    .stagger-4 { animation-delay: 0.4s; }
+    .stagger-5 { animation-delay: 0.5s; }
+    .stagger-6 { animation-delay: 0.6s; }
+    .stagger-7 { animation-delay: 0.7s; }
+    .stagger-8 { animation-delay: 0.8s; }
+    .stagger-9 { animation-delay: 0.9s; }
+    .stagger-10 { animation-delay: 1s; }
+
+    .hero-gradient {
+      background: radial-gradient(ellipse at center top, rgba(139, 92, 246, 0.15) 0%, transparent 60%);
+    }
+
+    .video-container {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+    }
+
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .search-highlight {
+      background: rgba(139, 92, 246, 0.3);
+      border-radius: 2px;
+      padding: 0 2px;
+    }
+  </style>
+  <style>body { box-sizing: border-box; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full">
+  <div id="app" class="min-h-full bg-grid overflow-auto"><!-- Navigation -->
+   <nav class="nav-blur fixed top-0 left-0 right-0 z-50 border-b border-purple-500/20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+     <div class="flex items-center justify-between h-16"><!-- Logo --> <a href="#" onclick="showPage('home'); return false;" class="flex items-center gap-3 group">
+       <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-purple-500 to-indigo-600 flex items-center justify-center group-hover:scale-110 transition-transform"><i data-lucide="gamepad-2" class="w-6 h-6 text-white"></i>
+       </div><span id="nav-title" class="font-display font-bold text-lg hidden sm:block">TOP 10 GAMES</span> </a> <!-- Desktop Menu -->
+      <div class="hidden md:flex items-center gap-6"><a href="#" onclick="showPage('home'); return false;" class="nav-link text-gray-300 hover:text-white transition-colors flex items-center gap-2"> <i data-lucide="home" class="w-4 h-4"></i> หน้าแรก </a> <a href="#" onclick="showPage('contact'); return false;" class="nav-link text-gray-300 hover:text-white transition-colors flex items-center gap-2"> <i data-lucide="mail" class="w-4 h-4"></i> ติดต่อเรา </a>
+      </div><!-- Search Bar -->
+      <div class="flex items-center gap-4">
+       <div class="relative"><input type="text" id="search-input" placeholder="ค้นหาเกม..." class="w-40 sm:w-64 bg-white/5 border border-purple-500/30 rounded-full px-4 py-2 pl-10 text-sm focus:outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition-all" oninput="handleSearch(this.value)"> <i data-lucide="search" class="w-4 h-4 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2"></i>
+       </div><!-- Mobile Menu Button --> <button onclick="toggleMobileMenu()" class="md:hidden p-2 rounded-lg hover:bg-white/10 transition-colors"> <i data-lucide="menu" class="w-6 h-6" id="menu-icon"></i> </button>
+      </div>
+     </div>
+    </div><!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden border-t border-purple-500/20 bg-black/50">
+     <div class="px-4 py-4 space-y-3"><a href="#" onclick="showPage('home'); toggleMobileMenu(); return false;" class="block px-4 py-2 rounded-lg hover:bg-white/10 transition-colors"> <i data-lucide="home" class="w-4 h-4 inline mr-2"></i> หน้าแรก </a> <a href="#" onclick="showPage('contact'); toggleMobileMenu(); return false;" class="block px-4 py-2 rounded-lg hover:bg-white/10 transition-colors"> <i data-lucide="mail" class="w-4 h-4 inline mr-2"></i> ติดต่อเรา </a>
+     </div>
+    </div>
+   </nav><!-- Search Results Dropdown -->
+   <div id="search-results" class="hidden fixed top-20 left-1/2 -translate-x-1/2 w-11/12 max-w-md bg-gray-900/95 backdrop-blur-xl border border-purple-500/30 rounded-2xl shadow-2xl z-50 overflow-hidden"></div><!-- Main Content -->
+   <main class="pt-16"><!-- Home Page -->
+    <div id="page-home" class="page-transition"><!-- Hero Section -->
+     <section class="hero-gradient relative py-20 sm:py-32 px-4">
+      <div class="max-w-4xl mx-auto text-center">
+       <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-500/10 border border-purple-500/30 mb-6"><i data-lucide="trophy" class="w-4 h-4 text-yellow-400"></i> <span class="text-sm text-purple-300">อัพเดทล่าสุด 2025</span>
+       </div>
+       <h1 id="hero-title" class="font-display text-4xl sm:text-6xl lg:text-7xl font-black mb-6 glow-text">TOP 10 <span class="block bg-gradient-to-r from-purple-400 via-pink-400 to-indigo-400 bg-clip-text text-transparent"> BEST GAMES </span></h1>
+       <p id="hero-subtitle" class="text-lg sm:text-xl text-gray-400 max-w-2xl mx-auto mb-8">รวมสุดยอดเกมที่ดีที่สุดตลอดกาล คัดสรรมาเพื่อนักเล่นเกมตัวจริง ครอบคลุมทั้ง Adventure, Action และ RPG</p><a href="#ranking" class="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-purple-600 to-indigo-600 rounded-full font-semibold hover:scale-105 transition-transform pulse-glow"> <i data-lucide="chevrons-down" class="w-5 h-5"></i> ดูอันดับ </a>
+      </div><!-- Floating Elements -->
+      <div class="absolute top-20 left-10 w-20 h-20 bg-purple-500/10 rounded-full blur-xl float-animation"></div>
+      <div class="absolute bottom-20 right-10 w-32 h-32 bg-indigo-500/10 rounded-full blur-xl float-animation" style="animation-delay: 1s;"></div>
+     </section><!-- Ranking Section -->
+     <section id="ranking" class="py-16 px-4">
+      <div class="max-w-6xl mx-auto">
+       <div class="flex items-center justify-center gap-4 mb-12">
+        <div class="h-px flex-1 bg-gradient-to-r from-transparent to-purple-500/50"></div>
+        <h2 class="font-display text-2xl sm:text-3xl font-bold text-center"><i data-lucide="crown" class="w-8 h-8 text-yellow-400 inline -mt-1 mr-2"></i> GAME RANKINGS</h2>
+        <div class="h-px flex-1 bg-gradient-to-l from-transparent to-purple-500/50"></div>
+       </div>
+       <div id="games-grid" class="space-y-6"><!-- Games will be rendered here -->
+       </div>
+      </div>
+     </section>
+    </div><!-- Detail Page Template -->
+    <div id="page-detail" class="hidden page-transition">
+     <div id="detail-content" class="max-w-5xl mx-auto px-4 py-12"><!-- Content will be dynamically inserted -->
+     </div>
+    </div><!-- Contact Page -->
+    <div id="page-contact" class="hidden page-transition">
+     <div class="max-w-4xl mx-auto px-4 py-20">
+      <div class="text-center mb-12">
+       <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-br from-purple-500 to-indigo-600 mb-6"><i data-lucide="mail" class="w-10 h-10 text-white"></i>
+       </div>
+       <h1 class="font-display text-4xl sm:text-5xl font-bold mb-4">ติดต่อเรา</h1>
+       <p class="text-gray-400 text-lg">มีคำถามหรือข้อเสนอแนะ? ส่งข้อความหาเราได้เลย!</p>
+      </div>
+      <form id="contact-form" onsubmit="handleContactSubmit(event)" class="bg-gray-900/50 border border-purple-500/20 rounded-3xl p-8 space-y-6 card-glow">
+       <div class="grid sm:grid-cols-2 gap-6">
+        <div><label class="block text-sm font-medium text-gray-300 mb-2">ชื่อ</label> <input type="text" required class="w-full bg-white/5 border border-purple-500/30 rounded-xl px-4 py-3 focus:outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition-all" placeholder="กรอกชื่อของคุณ">
+        </div>
+        <div><label class="block text-sm font-medium text-gray-300 mb-2">อีเมล</label> <input type="email" required class="w-full bg-white/5 border border-purple-500/30 rounded-xl px-4 py-3 focus:outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition-all" placeholder="your@email.com">
+        </div>
+       </div>
+       <div><label class="block text-sm font-medium text-gray-300 mb-2">หัวข้อ</label> <input type="text" required class="w-full bg-white/5 border border-purple-500/30 rounded-xl px-4 py-3 focus:outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition-all" placeholder="หัวข้อข้อความ">
+       </div>
+       <div><label class="block text-sm font-medium text-gray-300 mb-2">ข้อความ</label> <textarea rows="5" required class="w-full bg-white/5 border border-purple-500/30 rounded-xl px-4 py-3 focus:outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition-all resize-none" placeholder="พิมพ์ข้อความของคุณ..."></textarea>
+       </div><button type="submit" class="w-full py-4 bg-gradient-to-r from-purple-600 to-indigo-600 rounded-xl font-semibold hover:scale-[1.02] transition-transform flex items-center justify-center gap-2"> <i data-lucide="send" class="w-5 h-5"></i> ส่งข้อความ </button>
+      </form>
+      <div id="contact-success" class="hidden bg-green-500/10 border border-green-500/30 rounded-2xl p-8 text-center">
+       <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-500/20 mb-4"><i data-lucide="check-circle" class="w-8 h-8 text-green-400"></i>
+       </div>
+       <h3 class="text-xl font-semibold text-green-400 mb-2">ส่งข้อความสำเร็จ!</h3>
+       <p class="text-gray-400">ขอบคุณที่ติดต่อเรา เราจะตอบกลับโดยเร็วที่สุด</p>
+      </div>
+     </div>
+    </div>
+   </main><!-- Footer -->
+   <footer class="border-t border-purple-500/20 bg-black/30 mt-auto">
+    <div class="max-w-7xl mx-auto px-4 py-12">
+     <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8"><!-- Brand -->
+      <div class="sm:col-span-2 lg:col-span-1">
+       <div class="flex items-center gap-3 mb-4">
+        <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-purple-500 to-indigo-600 flex items-center justify-center"><i data-lucide="gamepad-2" class="w-6 h-6 text-white"></i>
+        </div><span id="footer-title" class="font-display font-bold">TOP 10 GAMES</span>
+       </div>
+       <p class="text-gray-400 text-sm">แหล่งรวมข้อมูลและจัดอันดับเกมที่ดีที่สุดตลอดกาล สำหรับนักเล่นเกมตัวจริง</p>
+      </div><!-- Quick Links -->
+      <div>
+       <h4 class="font-semibold mb-4 text-purple-300">ลิงก์ด่วน</h4>
+       <ul class="space-y-2 text-sm text-gray-400">
+        <li><a href="#" onclick="showPage('home'); return false;" class="hover:text-white transition-colors">หน้าแรก</a></li>
+        <li><a href="#ranking" class="hover:text-white transition-colors">อันดับเกม</a></li>
+        <li><a href="#" onclick="showPage('contact'); return false;" class="hover:text-white transition-colors">ติดต่อเรา</a></li>
+       </ul>
+      </div><!-- Categories -->
+      <div>
+       <h4 class="font-semibold mb-4 text-purple-300">หมวดหมู่</h4>
+       <ul class="space-y-2 text-sm text-gray-400">
+        <li><span class="hover:text-white transition-colors cursor-pointer">Action</span></li>
+        <li><span class="hover:text-white transition-colors cursor-pointer">Adventure</span></li>
+        <li><span class="hover:text-white transition-colors cursor-pointer">RPG</span></li>
+        <li><span class="hover:text-white transition-colors cursor-pointer">Open World</span></li>
+       </ul>
+      </div><!-- Social -->
+      <div>
+       <h4 class="font-semibold mb-4 text-purple-300">ติดตามเรา</h4>
+       <div class="flex gap-3"><a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-lg bg-white/5 border border-purple-500/30 flex items-center justify-center hover:bg-purple-500/20 hover:border-purple-500 transition-all"> <i data-lucide="twitter" class="w-5 h-5"></i> </a> <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-lg bg-white/5 border border-purple-500/30 flex items-center justify-center hover:bg-red-500/20 hover:border-red-500 transition-all"> <i data-lucide="youtube" class="w-5 h-5"></i> </a> <a href="https://discord.com" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-lg bg-white/5 border border-purple-500/30 flex items-center justify-center hover:bg-indigo-500/20 hover:border-indigo-500 transition-all"> <i data-lucide="message-circle" class="w-5 h-5"></i> </a>
+       </div>
+      </div>
+     </div>
+     <div class="border-t border-purple-500/20 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-gray-500">
+      <p>© 2025 Top 10 Best Games Ranking. All rights reserved.</p>
+      <p>Made with <i data-lucide="heart" class="w-4 h-4 inline text-red-500"></i> for Gamers • พัฒนาเว็บโดย <span class="text-purple-400">ชโยดม บัวขาว</span></p>
+     </div>
+    </div>
+   </footer>
+  </div>
+  <script>
+    // Game Data
+    const games = [
+      {
+        rank: 1,
+        title: "The Legend of Zelda: Breath of the Wild",
+        shortDesc: "ผจญภัยในโลกกว้างที่เต็มไปด้วยความลับและอิสระในการสำรวจ",
+        fullDesc: "เกม open-world ที่ปฏิวัติวงการเกมผจญภัย ด้วยระบบฟิสิกส์ที่สมจริง การสำรวจแบบไม่มีขีดจำกัด และการต่อสู้ที่ท้าทาย Breath of the Wild พิสูจน์ให้เห็นว่าเกมซีรีส์ Zelda ยังคงเป็นตำนานที่ไม่มีวันตาย",
+        developer: "Nintendo EPD",
+        publisher: "Nintendo",
+        releaseYear: 2017,
+        platforms: ["Nintendo Switch", "Wii U"],
+        genres: ["Action-Adventure", "Open World"],
+        score: 97,
+        scoreSource: "Metacritic",
+        youtubeId: "zw47_q9wbBE",
+        image: "https://img-eshop.cdn.nintendo.net/i/7c8f2e897c9e025649f97d4c9d5e1f92497bd6217bd442d6de8de17c46142e78.jpg",
+        gradient: "from-green-500 to-emerald-600",
+        reviews: [
+          { author: "IGN", score: "10/10", text: "ผลงานชิ้นเอกที่ทุกคนควรเล่น" },
+          { author: "GameSpot", score: "10/10", text: "นิยามใหม่ของเกม open-world" },
+          { author: "Polygon", score: "10/10", text: "เกมที่สมบูรณ์แบบที่สุดในทศวรรษ" }
+        ],
+        whyRanked: "ด้วยความอิสระในการเล่นที่ไม่เคยมีมาก่อน ระบบการสำรวจที่น่าทึ่ง และโลกที่มีชีวิตชีวา Breath of the Wild คือมาตรฐานใหม่ของเกม open-world"
+      },
+      {
+        rank: 2,
+        title: "God of War (2018)",
+        shortDesc: "การเดินทางครั้งใหม่ของ Kratos สู่ดินแดนเทพเจ้านอร์ส",
+        fullDesc: "God of War กลับมาพร้อมการเปลี่ยนแปลงครั้งใหญ่ ตั้งแต่มุมกล้องแบบ over-the-shoulder ไปจนถึงระบบต่อสู้ที่ลึกซึ้งกว่าเดิม เรื่องราวความสัมพันธ์ระหว่างพ่อลูกของ Kratos และ Atreus ทำให้เกมนี้มีความหมายมากกว่าแค่การต่อสู้",
+        developer: "Santa Monica Studio",
+        publisher: "Sony Interactive Entertainment",
+        releaseYear: 2018,
+        platforms: ["PlayStation 4", "PlayStation 5", "PC"],
+        genres: ["Action-Adventure", "Hack and Slash"],
+        score: 94,
+        scoreSource: "Metacritic",
+        youtubeId: "K0u_kAWLJOA",
+        image: "https://i.imgur.com/cLbtKSj.jpg",
+        gradient: "from-red-600 to-orange-500",
+        reviews: [
+          { author: "IGN", score: "10/10", text: "การกลับมาที่สมบูรณ์แบบ" },
+          { author: "Game Informer", score: "10/10", text: "ผลงานชิ้นเอกของ PlayStation" },
+          { author: "Kotaku", score: "Essential", text: "เกมที่ต้องเล่นในยุคนี้" }
+        ],
+        whyRanked: "การผสมผสานระหว่างเนื้อเรื่องที่ลึกซึ้ง การต่อสู้ที่สนุก และกราฟิกที่สวยงาม ทำให้เป็นหนึ่งในเกมที่ดีที่สุดของ PlayStation"
+      },
+      {
+        rank: 3,
+        title: "Red Dead Redemption 2",
+        shortDesc: "มหากาพย์ตะวันตกที่เล่าเรื่องราวของแก๊งค์ Van der Linde",
+        fullDesc: "Rockstar Games สร้างโลกตะวันตกที่มีชีวิตมากที่สุดเท่าที่เคยมีมา ด้วยรายละเอียดที่น่าทึ่งในทุกอณูของเกม ตั้งแต่สัตว์ป่าไปจนถึงตัวละครที่มีความลึก Red Dead Redemption 2 คือมาตรฐานใหม่ของการเล่าเรื่องในเกม",
+        developer: "Rockstar Games",
+        publisher: "Rockstar Games",
+        releaseYear: 2018,
+        platforms: ["PlayStation 4", "Xbox One", "PC"],
+        genres: ["Action-Adventure", "Open World", "Western"],
+        score: 97,
+        scoreSource: "Metacritic",
+        youtubeId: "eaW0tYpxyp0",
+        image: "https://cdn.rocketchainsaw.com.au/wp-content/uploads/2018/05/Red-Dead-Redemption-2-New-Logo.jpg",
+        gradient: "from-amber-600 to-yellow-500",
+        reviews: [
+          { author: "IGN", score: "10/10", text: "เกมที่สวยงามและมีรายละเอียดมากที่สุด" },
+          { author: "GamesRadar", score: "5/5", text: "ผลงานชิ้นเอกของยุคสมัย" },
+          { author: "Eurogamer", score: "Essential", text: "ประสบการณ์ที่ไม่มีใครเทียบได้" }
+        ],
+        whyRanked: "ความสมจริงที่ไม่เคยมีมาก่อน เนื้อเรื่องที่กินใจ และโลกที่รู้สึกมีชีวิตจริงๆ ทำให้เป็นเกมที่ต้องเล่นสักครั้งในชีวิต"
+      },
+      {
+        rank: 4,
+        title: "Elden Ring",
+        shortDesc: "โลกมืดมนจาก FromSoftware ร่วมกับ George R.R. Martin",
+        fullDesc: "การผสมผสานระหว่างสไตล์ Souls-like ของ FromSoftware กับโลก open-world ที่กว้างใหญ่ Elden Ring นำเสนอความท้าทายที่หนักหน่วงแต่ยุติธรรม พร้อมเรื่องราวลึกลับที่สร้างโดย George R.R. Martin",
+        developer: "FromSoftware",
+        publisher: "Bandai Namco Entertainment",
+        releaseYear: 2022,
+        platforms: ["PlayStation 5", "PlayStation 4", "Xbox Series X/S", "Xbox One", "PC"],
+        genres: ["Action RPG", "Open World", "Souls-like"],
+        score: 96,
+        scoreSource: "Metacritic",
+        youtubeId: "E3Huy2cdih0",
+        image: "https://cdn.wccftech.com/wp-content/uploads/2021/06/ER_KEY-ART-scaled.jpg",
+        gradient: "from-yellow-500 to-amber-600",
+        reviews: [
+          { author: "IGN", score: "10/10", text: "เกม open-world ที่ดีที่สุดเท่าที่เคยเล่นมา" },
+          { author: "Famitsu", score: "40/40", text: "ผลงานที่สมบูรณ์แบบ" },
+          { author: "PC Gamer", score: "90/100", text: "การผจญภัยที่ไม่รู้ลืม" }
+        ],
+        whyRanked: "นำเอาความท้าทายของ Dark Souls มาสู่โลก open-world อย่างลงตัว สร้างประสบการณ์ที่ไม่เหมือนใคร"
+      },
+      {
+        rank: 5,
+        title: "The Witcher 3: Wild Hunt",
+        shortDesc: "การผจญภัยของ Geralt ในการตามหา Ciri",
+        fullDesc: "CD Projekt Red สร้างโลกแฟนตาซีที่สมบูรณ์แบบที่สุด ด้วยเรื่องราวที่ซับซ้อน ตัวละครที่มีมิติ และ side quests ที่ดีเท่าๆ กับเนื้อหาหลัก The Witcher 3 คือมาตรฐานทองคำของเกม RPG",
+        developer: "CD Projekt Red",
+        publisher: "CD Projekt",
+        releaseYear: 2015,
+        platforms: ["PlayStation 4", "PlayStation 5", "Xbox One", "Xbox Series X/S", "Nintendo Switch", "PC"],
+        genres: ["Action RPG", "Open World", "Fantasy"],
+        score: 93,
+        scoreSource: "Metacritic",
+        youtubeId: "c0i88t0Kacs",
+        image: "https://upload.wikimedia.org/wikipedia/en/0/0c/Witcher_3_cover_art.jpg",
+        gradient: "from-gray-600 to-slate-700",
+        reviews: [
+          { author: "IGN", score: "9.3/10", text: "หนึ่งในเกม RPG ที่ดีที่สุดตลอดกาล" },
+          { author: "GameSpot", score: "10/10", text: "ประสบการณ์ที่น่าจดจำ" },
+          { author: "PC Gamer", score: "92/100", text: "เกมที่ไม่ควรพลาด" }
+        ],
+        whyRanked: "เนื้อเรื่องที่ลึกซึ้ง การตัดสินใจที่มีผลกระทบ และโลกที่สวยงาม ทำให้เป็นหนึ่งในเกม RPG ที่ดีที่สุด"
+      },
+      {
+        rank: 6,
+        title: "Dark Souls III",
+        shortDesc: "บทสรุปอันยิ่งใหญ่ของซีรีส์ Souls",
+        fullDesc: "การปิดฉากซีรีส์ Dark Souls อย่างสมบูรณ์แบบ ด้วยบอสที่น่าจดจำที่สุดในซีรีส์ ระบบต่อสู้ที่ลื่นไหล และ level design ที่ยอดเยี่ยม Dark Souls III คือการส่งท้ายที่สมกับตำนาน",
+        developer: "FromSoftware",
+        publisher: "Bandai Namco Entertainment",
+        releaseYear: 2016,
+        platforms: ["PlayStation 4", "Xbox One", "PC"],
+        genres: ["Action RPG", "Souls-like"],
+        score: 89,
+        scoreSource: "Metacritic",
+        youtubeId: "cWBwFhUv1-8",
+        image: "https://cdn.dlcompare.com/others_jpg/upload/gameimage/file/7437.jpeg.webp",
+        gradient: "from-gray-800 to-zinc-900",
+        reviews: [
+          { author: "IGN", score: "9.5/10", text: "การจบซีรีส์ที่สมบูรณ์แบบ" },
+          { author: "GameSpot", score: "8/10", text: "ท้าทายแต่คุ้มค่า" },
+          { author: "Polygon", score: "9/10", text: "บทเรียนของความอดทน" }
+        ],
+        whyRanked: "การรวมเอาสิ่งที่ดีที่สุดของซีรีส์มาไว้ในเกมเดียว พร้อมความท้าทายที่น่าจดจำ"
+      },
+      {
+        rank: 7,
+        title: "Hades",
+        shortDesc: "หนีออกจากนรกในเกม roguelike ที่สนุกที่สุด",
+        fullDesc: "Supergiant Games สร้างเกม roguelike ที่สมบูรณ์แบบ ด้วยการต่อสู้ที่ลื่นไหล เนื้อเรื่องที่พัฒนาไปเรื่อยๆ และตัวละครที่มีเสน่ห์ Hades พิสูจน์ว่าเกม indie สามารถเทียบชั้นเกมใหญ่ได้",
+        developer: "Supergiant Games",
+        publisher: "Supergiant Games",
+        releaseYear: 2020,
+        platforms: ["PlayStation 5", "PlayStation 4", "Xbox Series X/S", "Xbox One", "Nintendo Switch", "PC"],
+        genres: ["Action", "Roguelike", "Hack and Slash"],
+        score: 93,
+        scoreSource: "Metacritic",
+        youtubeId: "91t0ha9x0AE",
+        image: "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch/70010000033131/dbc8c55a21688b446a5c57711b726956483a14ef8c5ddb861f897c0595ccb6b5",
+        gradient: "from-red-700 to-rose-600",
+        reviews: [
+          { author: "IGN", score: "10/10", text: "Roguelike ที่ดีที่สุดเท่าที่เคยเล่น" },
+          { author: "Polygon", score: "Recommended", text: "เกม indie ที่สมบูรณ์แบบ" },
+          { author: "Kotaku", score: "Essential", text: "ทุกคนควรลอง" }
+        ],
+        whyRanked: "การผสมผสานที่ลงตัวระหว่างเกมเพลย์ที่เร้าใจ เนื้อเรื่องที่ดึงดูด และดนตรีที่ยอดเยี่ยม"
+      },
+      {
+        rank: 8,
+        title: "Sekiro: Shadows Die Twice",
+        shortDesc: "ซามูไรในยุคเซ็งโกคุที่ท้าทายที่สุด",
+        fullDesc: "FromSoftware เปลี่ยนทิศทางจาก Souls-like มาสู่เกมแอ็คชั่นสไตล์ญี่ปุ่น ด้วยระบบ parry ที่ต้องจับจังหวะ และการต่อสู้ที่เน้นความแม่นยำ Sekiro ชนะรางวัล Game of the Year อย่างสมศักดิ์ศรี",
+        developer: "FromSoftware",
+        publisher: "Activision",
+        releaseYear: 2019,
+        platforms: ["PlayStation 4", "Xbox One", "PC"],
+        genres: ["Action-Adventure", "Souls-like"],
+        score: 90,
+        scoreSource: "Metacritic",
+        youtubeId: "rXMX4YJ7Lks",
+        image: "https://images5.alphacoders.com/981/thumb-1920-981500.jpg",
+        gradient: "from-red-800 to-red-600",
+        reviews: [
+          { author: "IGN", score: "9.5/10", text: "เกมแอ็คชั่นที่ยอดเยี่ยม" },
+          { author: "Game Awards", score: "GOTY 2019", text: "เกมแห่งปี" },
+          { author: "Edge", score: "10/10", text: "ผลงานชิ้นเอก" }
+        ],
+        whyRanked: "ระบบการต่อสู้ที่เป็นเอกลักษณ์ การออกแบบบอสที่ยอดเยี่ยม และเรื่องราวที่น่าติดตาม"
+      },
+      {
+        rank: 9,
+        title: "Hollow Knight",
+        shortDesc: "Metroidvania ในดินแดนแมลงที่มืดมิด",
+        fullDesc: "Team Cherry สร้างเกม Metroidvania ที่ดีที่สุดในยุคสมัย ด้วยโลกที่กว้างใหญ่ บอสที่ท้าทาย และศิลปะที่สวยงาม Hollow Knight พิสูจน์ว่าเกม indie ราคาประหยัดสามารถให้ประสบการณ์ระดับ AAA ได้",
+        developer: "Team Cherry",
+        publisher: "Team Cherry",
+        releaseYear: 2017,
+        platforms: ["PlayStation 4", "Xbox One", "Nintendo Switch", "PC"],
+        genres: ["Action", "Metroidvania", "Platformer"],
+        score: 90,
+        scoreSource: "Metacritic",
+        youtubeId: "UAO2urG23S4",
+        image: "https://assets.nintendo.com/image/upload/q_auto/f_auto/store/software/switch2/70010000117998/39a6c2de074a49a3328f0c4912c5a5b3d6ac071518334c8f26d5bf3c1f119513",
+        gradient: "from-blue-900 to-indigo-800",
+        reviews: [
+          { author: "IGN", score: "9.4/10", text: "Metroidvania ที่ดีที่สุดในรอบหลายปี" },
+          { author: "Nintendo Life", score: "10/10", text: "เกมที่ต้องมีบน Switch" },
+          { author: "PC Gamer", score: "92/100", text: "คุ้มค่าทุกบาท" }
+        ],
+        whyRanked: "ปริมาณเนื้อหาที่มากมายในราคาที่ถูก การออกแบบโลกที่ยอดเยี่ยม และความท้าทายที่พอดี"
+      },
+      {
+        rank: 10,
+        title: "Baldur's Gate 3",
+        shortDesc: "RPG แบบ turn-based ที่สมบูรณ์แบบที่สุด",
+        fullDesc: "Larian Studios สร้างเกม RPG ที่ให้ความเป็นอิสระมากที่สุดเท่าที่เคยมีมา ด้วยตัวเลือกมากมายในการแก้ปัญหา การต่อสู้ที่ลึกซึ้ง และเนื้อเรื่องที่แตกแขนงได้ไม่รู้จบ Baldur's Gate 3 คือมาตรฐานใหม่ของ CRPG",
+        developer: "Larian Studios",
+        publisher: "Larian Studios",
+        releaseYear: 2023,
+        platforms: ["PlayStation 5", "Xbox Series X/S", "PC", "macOS"],
+        genres: ["RPG", "Turn-based Strategy", "CRPG"],
+        score: 96,
+        scoreSource: "Metacritic",
+        youtubeId: "1T22wNvNW6s",
+        image: "https://cdn.cloudflare.steamstatic.com/steam/apps/1086940/capsule_616x353.jpg?t=1690557776",
+        gradient: "from-purple-700 to-violet-600",
+        reviews: [
+          { author: "IGN", score: "10/10", text: "CRPG ที่ดีที่สุดตลอดกาล" },
+          { author: "Game Awards", score: "GOTY 2023", text: "เกมแห่งปี 2023" },
+          { author: "PC Gamer", score: "97/100", text: "ผลงานชิ้นเอกของ RPG" }
+        ],
+        whyRanked: "ความอิสระที่ไม่มีขีดจำกัด ระบบการต่อสู้ที่ลึก และเนื้อเรื่องที่ยอดเยี่ยม ทำให้เป็นเกม RPG ที่สมบูรณ์แบบ"
+      }
+    ];
+
+    // Config
+    const defaultConfig = {
+      site_title: 'TOP 10 GAMES',
+      hero_subtitle: 'รวมสุดยอดเกมที่ดีที่สุดตลอดกาล คัดสรรมาเพื่อนักเล่นเกมตัวจริง ครอบคลุมทั้ง Adventure, Action และ RPG'
+    };
+
+    let config = { ...defaultConfig };
+    let mobileMenuOpen = false;
+
+    // Element SDK Integration
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange: async (newConfig) => {
+          config = { ...defaultConfig, ...newConfig };
+          updateUI();
+        },
+        mapToCapabilities: (cfg) => ({
+          recolorables: [],
+          borderables: [],
+          fontEditable: undefined,
+          fontSizeable: undefined
+        }),
+        mapToEditPanelValues: (cfg) => new Map([
+          ['site_title', cfg.site_title || defaultConfig.site_title],
+          ['hero_subtitle', cfg.hero_subtitle || defaultConfig.hero_subtitle]
+        ])
+      });
+    }
+
+    function updateUI() {
+      document.getElementById('nav-title').textContent = config.site_title;
+      document.getElementById('footer-title').textContent = config.site_title;
+      document.getElementById('hero-subtitle').textContent = config.hero_subtitle;
+    }
+
+    // Mobile Menu Toggle
+    function toggleMobileMenu() {
+      mobileMenuOpen = !mobileMenuOpen;
+      const menu = document.getElementById('mobile-menu');
+      const icon = document.getElementById('menu-icon');
+      
+      if (mobileMenuOpen) {
+        menu.classList.remove('hidden');
+        icon.setAttribute('data-lucide', 'x');
+      } else {
+        menu.classList.add('hidden');
+        icon.setAttribute('data-lucide', 'menu');
+      }
+      lucide.createIcons();
+    }
+
+    // Page Navigation
+    function showPage(pageName, gameRank = null) {
+      const pages = ['home', 'detail', 'contact'];
+      pages.forEach(page => {
+        const el = document.getElementById(`page-${page}`);
+        if (el) {
+          el.classList.add('hidden');
+          el.classList.remove('page-transition');
+        }
+      });
+
+      const targetPage = document.getElementById(`page-${pageName}`);
+      if (targetPage) {
+        targetPage.classList.remove('hidden');
+        void targetPage.offsetWidth; // Force reflow
+        targetPage.classList.add('page-transition');
+      }
+
+      if (pageName === 'detail' && gameRank) {
+        renderDetailPage(gameRank);
+      }
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      
+      // Close search results
+      document.getElementById('search-results').classList.add('hidden');
+    }
+
+    // Render Game Card
+    function renderGameCard(game, index) {
+      const rankClass = game.rank <= 3 ? `rank-${game.rank}` : '';
+      
+      return `
+        <div class="game-card ${rankClass} bg-gray-900/50 border border-purple-500/20 rounded-2xl overflow-hidden card-glow opacity-0 stagger-${index + 1}" style="animation: fadeSlideIn 0.5s ease forwards; animation-delay: ${index * 0.1}s;">
+          <div class="flex flex-col sm:flex-row">
+            <!-- Rank Badge & Image -->
+            <div class="relative sm:w-48 lg:w-64 flex-shrink-0">
+             <div class="aspect-video sm:aspect-square bg-gradient-to-br ${game.gradient} flex items-center justify-center overflow-hidden">
+                <img src="${game.image}" alt="${game.title}" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                    </div>
+              <div class="rank-badge absolute top-3 left-3 w-12 h-12 sm:w-14 sm:h-14 rounded-xl flex items-center justify-center">
+                <span class="font-display font-black text-xl sm:text-2xl text-white">#${game.rank}</span>
+              </div>
+            </div>
+            
+            <!-- Content -->
+            <div class="flex-1 p-5 sm:p-6 flex flex-col">
+              <div class="flex flex-wrap items-start justify-between gap-3 mb-3">
+                <div>
+                  <h3 class="font-display text-xl sm:text-2xl font-bold text-white mb-1">${game.title}</h3>
+                  <div class="flex flex-wrap gap-2">
+                    ${game.genres.map(g => `<span class="text-xs px-2 py-1 rounded-full bg-purple-500/20 text-purple-300">${g}</span>`).join('')}
+                  </div>
+                </div>
+                <div class="flex items-center gap-2 px-3 py-2 rounded-xl bg-green-500/10 border border-green-500/30">
+                  <i data-lucide="star" class="w-5 h-5 text-yellow-400 fill-yellow-400"></i>
+                  <span class="font-display font-bold text-green-400">${game.score}</span>
+                  <span class="text-xs text-gray-400">${game.scoreSource}</span>
+                </div>
+              </div>
+              
+              <p class="text-gray-400 mb-4 flex-1">${game.shortDesc}</p>
+              
+              <div class="flex flex-wrap items-center justify-between gap-3">
+                <div class="flex items-center gap-4 text-sm text-gray-500">
+                  <span class="flex items-center gap-1">
+                    <i data-lucide="calendar" class="w-4 h-4"></i>
+                    ${game.releaseYear}
+                  </span>
+                  <span class="flex items-center gap-1">
+                    <i data-lucide="building-2" class="w-4 h-4"></i>
+                    ${game.developer}
+                  </span>
+                </div>
+                <button onclick="showPage('detail', ${game.rank})" class="flex items-center gap-2 px-4 py-2 bg-purple-500/20 hover:bg-purple-500/40 border border-purple-500/30 rounded-full text-purple-300 hover:text-white transition-all text-sm font-medium">
+                  ดูรายละเอียด
+                  <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    // Render Detail Page
+    function renderDetailPage(rank) {
+      const game = games.find(g => g.rank === rank);
+      if (!game) return;
+
+      const detailContent = document.getElementById('detail-content');
+      detailContent.innerHTML = `
+        <!-- Back Button -->
+        <button onclick="showPage('home')" class="inline-flex items-center gap-2 px-4 py-2 mb-8 bg-white/5 hover:bg-white/10 border border-purple-500/30 rounded-full transition-all text-gray-300 hover:text-white">
+          <i data-lucide="arrow-left" class="w-5 h-5"></i>
+          กลับไป Top 10
+        </button>
+        
+        <!-- Hero Section -->
+        <div class="relative rounded-3xl overflow-hidden mb-8">
+          <div class="aspect-video bg-gradient-to-br ${game.gradient} relative">
+            <img src="${game.image}" alt="${game.title}" class="absolute inset-0 w-full h-full object-cover opacity-30">
+          </div>
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+          <div class="absolute bottom-0 left-0 right-0 p-6 sm:p-10">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="rank-badge ${game.rank <= 3 ? `rank-${game.rank}` : ''} w-16 h-16 rounded-2xl flex items-center justify-center">
+                <span class="font-display font-black text-2xl text-white">#${game.rank}</span>
+              </div>
+              <div class="flex items-center gap-2 px-4 py-2 rounded-xl bg-green-500/20 border border-green-500/30 backdrop-blur-sm">
+                <i data-lucide="star" class="w-6 h-6 text-yellow-400 fill-yellow-400"></i>
+                <span class="font-display font-bold text-2xl text-green-400">${game.score}</span>
+                <span class="text-sm text-gray-300">${game.scoreSource}</span>
+              </div>
+            </div>
+            <h1 class="font-display text-3xl sm:text-5xl font-black text-white mb-3">${game.title}</h1>
+            <div class="flex flex-wrap gap-2">
+              ${game.genres.map(g => `<span class="text-sm px-3 py-1 rounded-full bg-purple-500/30 text-purple-200">${g}</span>`).join('')}
+            </div>
+          </div>
+        </div>
+        
+        <div class="grid lg:grid-cols-3 gap-8">
+          <!-- Main Content -->
+          <div class="lg:col-span-2 space-y-8">
+            <!-- Description -->
+            <div class="bg-gray-900/50 border border-purple-500/20 rounded-2xl p-6 card-glow">
+              <h2 class="font-display text-xl font-bold mb-4 flex items-center gap-2">
+                <i data-lucide="info" class="w-5 h-5 text-purple-400"></i>
+                เกี่ยวกับเกม
+              </h2>
+              <p class="text-gray-300 leading-relaxed">${game.fullDesc}</p>
+            </div>
+            
+            <!-- Why Ranked -->
+            <div class="bg-gradient-to-br from-purple-900/30 to-indigo-900/30 border border-purple-500/30 rounded-2xl p-6">
+              <h2 class="font-display text-xl font-bold mb-4 flex items-center gap-2">
+                <i data-lucide="trophy" class="w-5 h-5 text-yellow-400"></i>
+                เหตุผลที่ติดอันดับ
+              </h2>
+              <p class="text-gray-300 leading-relaxed">${game.whyRanked}</p>
+            </div>
+            
+            <!-- Video -->
+            <div class="bg-gray-900/50 border border-purple-500/20 rounded-2xl overflow-hidden card-glow">
+              <div class="p-6 border-b border-purple-500/20">
+                <h2 class="font-display text-xl font-bold flex items-center gap-2">
+                  <i data-lucide="play-circle" class="w-5 h-5 text-red-400"></i>
+                  วิดีโอตัวอย่าง
+                </h2>
+              </div>
+              <div class="video-container">
+                <iframe 
+                  src="https://www.youtube.com/embed/${game.youtubeId}" 
+                  title="${game.title} Trailer"
+                  frameborder="0" 
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                  allowfullscreen
+                  loading="lazy"
+                ></iframe>
+              </div>
+            </div>
+            
+            <!-- Reviews -->
+            <div class="bg-gray-900/50 border border-purple-500/20 rounded-2xl p-6 card-glow">
+              <h2 class="font-display text-xl font-bold mb-6 flex items-center gap-2">
+                <i data-lucide="message-square" class="w-5 h-5 text-purple-400"></i>
+                รีวิวจากสื่อ
+              </h2>
+              <div class="space-y-4">
+                ${game.reviews.map(review => `
+                  <div class="bg-white/5 rounded-xl p-4 border border-white/10">
+                    <div class="flex items-center justify-between mb-2">
+                      <span class="font-semibold text-white">${review.author}</span>
+                      <span class="px-3 py-1 bg-green-500/20 text-green-400 rounded-full text-sm font-medium">${review.score}</span>
+                    </div>
+                    <p class="text-gray-400 text-sm">"${review.text}"</p>
+                  </div>
+                `).join('')}
+              </div>
+            </div>
+          </div>
+          
+          <!-- Sidebar -->
+          <div class="space-y-6">
+            <!-- Game Info -->
+            <div class="bg-gray-900/50 border border-purple-500/20 rounded-2xl p-6 card-glow">
+              <h3 class="font-display text-lg font-bold mb-4">ข้อมูลเกม</h3>
+              <div class="space-y-4">
+                <div class="flex items-start gap-3">
+                  <div class="w-10 h-10 rounded-lg bg-purple-500/20 flex items-center justify-center flex-shrink-0">
+                    <i data-lucide="code-2" class="w-5 h-5 text-purple-400"></i>
+                  </div>
+                  <div>
+                    <p class="text-sm text-gray-500">ผู้พัฒนา</p>
+                    <p class="text-white">${game.developer}</p>
+                  </div>
+                </div>
+                <div class="flex items-start gap-3">
+                  <div class="w-10 h-10 rounded-lg bg-purple-500/20 flex items-center justify-center flex-shrink-0">
+                    <i data-lucide="building" class="w-5 h-5 text-purple-400"></i>
+                  </div>
+                  <div>
+                    <p class="text-sm text-gray-500">ผู้จัดจำหน่าย</p>
+                    <p class="text-white">${game.publisher}</p>
+                  </div>
+                </div>
+                <div class="flex items-start gap-3">
+                  <div class="w-10 h-10 rounded-lg bg-purple-500/20 flex items-center justify-center flex-shrink-0">
+                    <i data-lucide="calendar" class="w-5 h-5 text-purple-400"></i>
+                  </div>
+                  <div>
+                    <p class="text-sm text-gray-500">ปีที่วางจำหน่าย</p>
+                    <p class="text-white">${game.releaseYear}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <!-- Platforms -->
+            <div class="bg-gray-900/50 border border-purple-500/20 rounded-2xl p-6 card-glow">
+              <h3 class="font-display text-lg font-bold mb-4">แพลตฟอร์ม</h3>
+              <div class="flex flex-wrap gap-2">
+                ${game.platforms.map(platform => `
+                  <span class="px-3 py-2 bg-white/5 border border-white/10 rounded-lg text-sm text-gray-300">${platform}</span>
+                `).join('')}
+              </div>
+            </div>
+            
+            <!-- Navigation -->
+            <div class="bg-gray-900/50 border border-purple-500/20 rounded-2xl p-6 card-glow">
+              <h3 class="font-display text-lg font-bold mb-4">ดูเกมอื่น</h3>
+              <div class="space-y-2">
+                ${game.rank > 1 ? `
+                  <button onclick="showPage('detail', ${game.rank - 1})" class="w-full flex items-center justify-between px-4 py-3 bg-white/5 hover:bg-white/10 rounded-xl transition-colors">
+                    <span class="text-gray-300">อันดับ ${game.rank - 1}</span>
+                    <i data-lucide="chevron-up" class="w-5 h-5 text-purple-400"></i>
+                  </button>
+                ` : ''}
+                ${game.rank < 10 ? `
+                  <button onclick="showPage('detail', ${game.rank + 1})" class="w-full flex items-center justify-between px-4 py-3 bg-white/5 hover:bg-white/10 rounded-xl transition-colors">
+                    <span class="text-gray-300">อันดับ ${game.rank + 1}</span>
+                    <i data-lucide="chevron-down" class="w-5 h-5 text-purple-400"></i>
+                  </button>
+                ` : ''}
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+      
+      lucide.createIcons();
+    }
+
+    // Search Handler
+    function handleSearch(query) {
+      const searchResults = document.getElementById('search-results');
+      
+      if (!query.trim()) {
+        searchResults.classList.add('hidden');
+        return;
+      }
+
+      const filtered = games.filter(game => 
+        game.title.toLowerCase().includes(query.toLowerCase()) ||
+        game.genres.some(g => g.toLowerCase().includes(query.toLowerCase())) ||
+        game.developer.toLowerCase().includes(query.toLowerCase())
+      );
+
+      if (filtered.length === 0) {
+        searchResults.innerHTML = `
+          <div class="p-6 text-center text-gray-400">
+            <i data-lucide="search-x" class="w-10 h-10 mx-auto mb-3 opacity-50"></i>
+            <p>ไม่พบเกมที่ค้นหา</p>
+          </div>
+        `;
+      } else {
+        searchResults.innerHTML = `
+          <div class="p-2">
+            ${filtered.map(game => `
+              <button onclick="showPage('detail', ${game.rank}); document.getElementById('search-input').value = '';" class="w-full flex items-center gap-4 p-3 hover:bg-white/10 rounded-xl transition-colors text-left">
+                <div class="w-12 h-12 rounded-lg bg-gradient-to-br ${game.gradient} overflow-hidden flex items-center justify-center flex-shrink-0">
+                  <img src="${game.image}" alt="${game.title}" class="w-full h-full object-cover">
+                </div>
+                <div class="flex-1 min-w-0">
+                  <p class="font-semibold text-white truncate">${game.title}</p>
+                  <p class="text-sm text-gray-400">อันดับ #${game.rank} • ${game.releaseYear}</p>
+                </div>
+                <div class="flex items-center gap-1 text-green-400">
+                  <i data-lucide="star" class="w-4 h-4 fill-current"></i>
+                  <span class="font-medium">${game.score}</span>
+                </div>
+              </button>
+            `).join('')}
+          </div>
+        `;
+      }
+
+      searchResults.classList.remove('hidden');
+      lucide.createIcons();
+    }
+
+    // Contact Form Handler
+    function handleContactSubmit(event) {
+      event.preventDefault();
+      const form = document.getElementById('contact-form');
+      const success = document.getElementById('contact-success');
+      
+      form.classList.add('hidden');
+      success.classList.remove('hidden');
+      
+      setTimeout(() => {
+        form.reset();
+        form.classList.remove('hidden');
+        success.classList.add('hidden');
+      }, 5000);
+    }
+
+    // Close search results when clicking outside
+    document.addEventListener('click', (e) => {
+      const searchResults = document.getElementById('search-results');
+      const searchInput = document.getElementById('search-input');
+      
+      if (!searchResults.contains(e.target) && !searchInput.contains(e.target)) {
+        searchResults.classList.add('hidden');
+      }
+    });
+
+    // Initialize
+    document.addEventListener('DOMContentLoaded', () => {
+      // Render games list (from rank 1 to 10)
+      const gamesGrid = document.getElementById('games-grid');
+      const sortedGames = [...games].sort((a, b) => a.rank - b.rank);
+      gamesGrid.innerHTML = sortedGames.map((game, index) => renderGameCard(game, index)).join('');
+      
+      // Initialize Lucide icons
+      lucide.createIcons();
+      
+      // Update UI with config
+      updateUI();
+    });
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9d9f45f8145ace6e',t:'MTc3MzExMzc2OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
